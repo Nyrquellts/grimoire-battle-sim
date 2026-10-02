@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grimoire Battle Sim</title>
+<meta name="description" content="A tabletop-style tactical battle simulator. Build a hero, pick the opposition, and fight it out on a living map. Runs entirely in your browser.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/src/ui/styles.css">
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <div class="brand"><div class="crest">G</div><div><h1>Grimoire Battle Sim</h1><small>Build a hero · pick the opposition · fight it out on the map</small></div></div>
+  <div class="vitals" id="topVitals"></div>
+  <div class="top-actions"><button class="btn small" data-action="undo">Undo</button><button class="btn small good" data-action="testerHeal">Full Heal</button><button class="btn small good" data-action="testerRepair">Full Repair</button><button class="btn small" data-action="tester">Tester</button><button class="btn small" data-action="audio">SFX On</button><button class="btn small" data-action="reset">Reset</button></div>
+</header>
+<nav class="tabs"><button class="btn tab active" data-view="game">Game</button><button class="btn tab" data-view="character">Hero</button><button class="btn tab" data-view="bestiary">Bestiary</button><button class="btn tab" data-view="alchemy">Alchemy</button><button class="btn tab" data-view="rules">Rules</button><button class="btn tab" data-view="forge">Forge</button><button class="btn tab" data-view="diagnostics">Diagnostics</button></nav>
+<section class="view active" id="view-game">
+  <div class="panel encounter-panel"><div class="panel-head"><div><div class="eyebrow">Encounter builder</div><h2>Pick the opposition</h2></div><div class="encounter-head-right"><span class="encounter-summary" id="encounterSummary"></span><span class="badge" id="engineStatus">Setup</span></div></div><div class="panel-body">
+    <div class="encounter-setup">
+      <label class="field">Category<select id="enemyCategory"></select></label>
+      <label class="field">Foe<select id="enemyFoe"></select></label>
+      <label class="field">Region<select id="enemyRegion"></select></label>
+      <label class="field" id="subtypeField">Subspecies<select id="enemySubtype"></select></label>
+      <label class="field">Variance<select id="enemyVariant"></select></label>
+      <label class="field" id="experienceField">Experience<select id="enemyExperience"></select></label>
+      <label class="field" id="loadoutField">Loadout<select id="enemyLoadout"></select></label>
+      <label class="field">Qty<input id="enemyQuantity" type="number" min="1" max="20" value="1"></label>
+      <label class="field">Battlefield<select id="situation"></select></label>
+      <div class="strict-badge" title="Combat uses the standard tabletop action economy.">Standard rules</div>
+      <div class="encounter-actions"><button class="btn" data-action="addFoe">+ Add</button><button class="btn primary" data-action="start">Start</button><button class="btn danger" data-action="stop">Stop</button></div>
+    </div>
+    <div class="lineup-strip" id="encounterLineup"></div>
+  </div></div>
+  <div class="layout">
+    <section class="panel battlefield-panel"><div class="panel-head"><div><div class="eyebrow">Tactical battlefield</div><h2 id="battleTitle">Map Setup</h2></div><div class="mode-switch"><span class="round-pill" id="roundPill">Round —</span><button class="btn small" data-action="debug">AI Debug Off</button></div></div><div class="grid-wrap"><div class="battle-grid" id="battleGrid"></div><div class="fx-layer" id="fxLayer" aria-hidden="true"></div><div class="reaction-box" id="reactionBox" hidden></div></div><div class="map-legend"><span>H0-H4 elevation</span><span>green outline = reachable</span><span>gold = route</span><span>double border = cover</span><span class="legend-dot yrden">Yrden</span><span class="legend-dot trap">Magic Trap</span><span class="legend-dot fire">Fire</span><span class="legend-dot poison">Poison</span><span class="legend-dot dimeritium">Dimeritium</span><span class="legend-dot moondust">Moon Dust</span><span class="legend-dot dream">Dream gas</span><span>amber token = routing / still chaseable</span></div><div class="panel-body">
+      <div class="resource-strip" id="resourceStrip"></div>
+      <div class="controls"><button class="btn" data-palette="attack">Attack</button><button class="btn" data-palette="signs">Signs</button><button class="btn" data-palette="alchemy">Alchemy</button><button class="btn" data-palette="tools">Fight Tools</button><button class="btn" data-palette="social">Morale / Social</button><button class="btn" data-palette="move">Move</button><button class="btn" data-action="recover">Recover STA</button><button class="btn danger" data-action="endTurn">End Turn</button></div>
+      <div class="action-card" id="actionPalette"><h3>Direct map controls</h3><div class="muted">Click a reachable tile to move. Click an enemy to target it, then choose an action.</div></div>
+      <details class="command-drawer"><summary>Text command (optional)</summary><div class="command"><input id="commandInput" placeholder="strong silver attack head; cast Igni 3; reload; move 5"><button class="btn" data-action="command">Do</button></div></details>
+      <div class="panel compact-body-panel" style="margin-top:8px"><div class="panel-head"><h3>Body condition</h3><small class="muted" id="playerCondition"></small></div><div class="panel-body"><div class="body-grid" id="playerBody"></div></div></div>
+    </div></section>
+    <section class="side-stack"><div class="panel"><div class="panel-head"><div><div class="eyebrow">Selected target dossier</div><h2 id="targetName">No target</h2></div><button class="btn small" data-action="lifeToggle">Life</button></div><div class="panel-body target-dossier-body" id="targetDossier"></div></div><div class="panel"><div class="panel-head"><h3>Opposition</h3><small id="hostileCount"></small></div><div class="panel-body"><div class="roster" id="enemyRoster"></div></div></div></section>
+    <section class="panel feed-panel"><div class="panel-head"><div><div class="eyebrow">Combat feed</div><h2>What happened</h2></div><button class="btn small" data-action="clearFeed">Clear</button></div><div class="panel-body"><div class="feed" id="combatFeed"></div></div></section>
+  </div>
+</section>
+<section class="view" id="view-character"><div id="characterRoot"></div></section>
+<section class="view" id="view-bestiary"><div class="registry-grid"><div class="panel"><div class="panel-head"><h2>Bestiary registry</h2><span class="badge" id="bestCount"></span></div><div class="panel-body registry-list" id="bestList"></div></div><div class="panel"><div class="panel-head"><h2>Weapons registry</h2><span class="badge" id="weaponCount"></span></div><div class="panel-body registry-list" id="weaponList"></div></div><div class="panel"><div class="panel-head"><h2>Signs registry</h2><span class="badge" id="signCount"></span></div><div class="panel-body registry-list" id="signList"></div></div></div></section>
+<section class="view" id="view-alchemy"><div class="registry-grid"><div class="panel"><div class="panel-head"><h2>Potions & decoctions</h2></div><div class="panel-body registry-list" id="potionList"></div></div><div class="panel"><div class="panel-head"><h2>Bombs</h2></div><div class="panel-body registry-list" id="bombList"></div></div><div class="panel"><div class="panel-head"><h2>Blade oils</h2></div><div class="panel-body registry-list" id="oilList"></div></div></div></section>
+<section class="view" id="view-rules"><div class="registry-grid"><div class="panel"><div class="panel-head"><h2>Conditions</h2></div><div class="panel-body registry-list" id="conditionList"></div></div><div class="panel"><div class="panel-head"><h2>Critical wounds</h2></div><div class="panel-body registry-list" id="criticalList"></div></div><div class="panel"><div class="panel-head"><h2>Architecture</h2></div><div class="panel-body"><div class="code-note">LAYER 1 — PURE SIMULATION\nMath · state · AI · registries · tables\nNo DOM/CSS ownership.\n\nLAYER 2 — ACTION GATEWAY\nActionDispatcher.execute(actionName, payload)\nvalidate → spend → run\nrollback on exception\n\nLAYER 3 — PRESENTATION ADAPTER\nPersistent DOM nodes read Store.read().\nUI emits actions; it never mutates combat state.\nStore notifications are coalesced to one visual frame.</div></div></div></div></section>
+<section class="view" id="view-forge"><div id="forgeRoot"></div></section>
+<section class="view" id="view-diagnostics"><div class="panel"><div class="panel-head"><h2>Architecture & rules diagnostics</h2><button class="btn primary" data-action="selfTest">Run self tests</button></div><div class="panel-body"><div id="diagReport" class="debug-list">No tests run yet.</div></div></div></section>
+</div><div class="toast-layer" id="toastLayer"></div><div id="modalLayer"></div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+{
+  "activeAlchemy": {},
+  "activeShield": null,
+  "activeSigns": {},
+  "age": 20,
+  "ageBand": "Young adult",
+  "ai": null,
+  "ammo": {
+    "bodkin": 5,
+    "broadhead": 5,
+    "standard": 20
+  },
+  "anatomyId": "humanoid",
+  "appearance": {
+    "build": "compact, heavily conditioned",
+    "eyes": "amber-brown",
+    "hair": "long dreadlocks",
+    "height": "5′6½″",
+    "heritage": "half-elf",
+    "notable": [
+      "Manticore medallion",
+      "acid scar over the left brow and upper cheek",
+      "young witcher"
+    ],
+    "skin": "dark brown"
+  },
+  "armorByLocation": {
+    "head": 0,
+    "leftArm": 14,
+    "leftLeg": 14,
+    "rightArm": 14,
+    "rightLeg": 14,
+    "torso": 14
+  },
+  "armorMaxByLocation": {
+    "head": 0,
+    "leftArm": 14,
+    "leftLeg": 14,
+    "rightArm": 14,
+    "rightLeg": 14,
+    "torso": 14
+  },
+  "baseName": "Nikhail",
+  "combatDoctrines": [
+    "witcher"
+  ],
+  "control": "PLAYER",
+  "criticals": [],
+  "crossbowLoaded": true,
+  "dead": false,
+  "death": null,
+  "defenses": {
+    "block": 19,
+    "dodge": 20,
+    "magic": 15,
+    "reposition": 20
+  },
+  "disabledLocations": {},
+  "family": "Human",
+  "gender": "Male",
+  "history": [],
+  "hp": 45,
+  "id": "nikhail",
+  "identity": {
+    "age": 20,
+    "gender": "Male",
+    "pronouns": {
+      "object": "him",
+      "possessiveAdjective": "his",
+      "possessivePronoun": "his",
+      "reflexive": "himself",
+      "subject": "he"
+    },
+    "region": "Zerrikania"
+  },
+  "immunities": [],
+  "inventory": {
+    "bombs": {
+      "dancing-star": 2,
+      "devil-s-puffball": 2,
+      "dimeritium-bomb": 2,
+      "dragon-s-dream": 2,
+      "grapeshot": 2,
+      "moon-dust": 2,
+      "northern-wind": 2,
+      "samum": 2
+    },
+    "decoctions": {
+      "arachas-decoction": 1,
+      "noon-wraith-decoction": 1,
+      "troll-decoction": 1,
+      "wyvern-decoction": 1
+    },
+    "oils": {
+      "beast-oil": 3,
+      "cursed-oil": 3,
+      "draconid-oil": 3,
+      "elementa-oil": 3,
+      "hanged-man-s-venom": 3,
+      "hybrid-oil": 3,
+      "insectoid-oil": 3,
+      "necrophage-oil": 3,
+      "ogroid-oil": 3,
+      "relict-oil": 3,
+      "specter-oil": 3,
+      "vampire-oil": 3
+    },
+    "potions": {
+      "black-blood": 2,
+      "blizzard": 2,
+      "cat": 2,
+      "full-moon": 2,
+      "golden-oriole": 2,
+      "killer-whale": 2,
+      "maribor-forest": 2,
+      "petri-s-filter": 2,
+      "swallow": 2,
+      "tawny-owl": 2,
+      "thunderbolt": 2,
+      "white-honey": 2
+    }
+  },
+  "maxHp": 45,
+  "maxSta": 45,
+  "maxToxicity": 150,
+  "morale": {
+    "fear": 0,
+    "state": "steady"
+  },
+  "name": "Nikhail",
+  "objective": {
+    "id": "eliminate"
+  },
+  "personalityProfile": "stoic",
+  "pos": {
+    "x": 4,
+    "y": 8
+  },
+  "quenBlocks": 0,
+  "rec": 9,
+  "resistances": [],
+  "selectedWeapon": "manticoreSteel",
+  "skills": {
+    "Alchemy": 16,
+    "Athletics": 20,
+    "Awareness": 17,
+    "Brawling": 18,
+    "Courage": 16,
+    "Crafting": 13,
+    "Crossbow": 19,
+    "Deduction": 14,
+    "Dodge / Escape": 20,
+    "Endurance": 17,
+    "First Aid": 12,
+    "Human Perception": 8,
+    "Intimidation": 15,
+    "Melee (Shield)": 19,
+    "Persuasion": 7,
+    "Physique": 16,
+    "Resist Coercion": 16,
+    "Resist Magic": 15,
+    "Ride": 17,
+    "Social Etiquette": 12,
+    "Spell Casting": 15,
+    "Stealth": 19,
+    "Swordsmanship": 20,
+    "Tactics": 14,
+    "Wilderness Survival": 15,
+    "Witcher Training": 16
+  },
+  "sta": 45,
+  "stats": {
+    "BODY": 9,
+    "CRA": 8,
+    "DEX": 11,
+    "EMP": 4,
+    "INT": 8,
+    "LUCK": 3,
+    "REF": 11,
+    "SPD": 10,
+    "STUN": 9,
+    "WILL": 9
+  },
+  "statuses": {},
+  "team": "player",
+  "tools": [
+    "silverHuntingKnife"
+  ],
+  "toxicity": 0,
+  "vigor": 5,
+  "vulnerabilities": [],
+  "weapons": [
+    "manticoreSteel",
+    "manticoreSilver",
+    "sipar",
+    "zerrikanianCrossbow"
+  ]
+}

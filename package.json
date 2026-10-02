@@ -1,0 +1,47 @@
+{
+  "name": "grimoire-battle-sim",
+  "version": "1.0.0",
+  "description": "A tabletop-style tactical battle simulator: build a hero, pick the opposition, and fight it out on a living map. Runs entirely in the browser.",
+  "private": true,
+  "license": "MIT",
+  "author": "Nyrquellts",
+  "homepage": "https://github.com/Nyrquellts/grimoire-battle-sim#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nyrquellts/grimoire-battle-sim.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nyrquellts/grimoire-battle-sim/issues"
+  },
+  "keywords": [
+    "tactical-rpg",
+    "battle-simulator",
+    "tabletop",
+    "typescript",
+    "vite"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "ci": "npm run audit:kernel && npm run typecheck && npm run test && npm run build",
+    "audit:kernel": "node scripts/audit-kernel.mjs",
+    "metrics": "node scripts/metrics.mjs"
+  },
+  "dependencies": {
+    "zod": "4.4.3",
+    "zustand": "5.0.15"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2",
+    "vite": "8.2.1",
+    "vitest": "4.1.11",
+    "@types/node": "^22.0.0"
+  }
+}
